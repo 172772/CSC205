@@ -2,8 +2,8 @@
 public class Repeats {
 
 	public static void main(String[] args) {
-		int[] a = {1,3,4,5,6,7,6,7,6,7,66,6,8,};
-		System.out.println(hasFourRepeats(a));
+		int[] a = {1,1,1,5,6,7,6,7,1,7,66};
+		System.out.println("Repeats? = "+hasFourRepeats(a));
 	}
 	
 	public static boolean hasFourRepeats(int[] a) {
