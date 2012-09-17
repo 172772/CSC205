@@ -69,5 +69,18 @@ public class IntSortSearch {
 		System.out.println("Num Comps = " + numComps);
 		return -1; // Line 18
 	}
+	
+	public static void printSum100() {
+		numComps = 0;
+		int sum = 0;
+		
+		for(int i = 1; i<=100; i++){
+			numComps++;
+			sum += i;
+		}
+		
+		System.out.println("Num Comps = " + numComps);
+		System.out.println("Sum = " + sum);
+	}
 
 }
