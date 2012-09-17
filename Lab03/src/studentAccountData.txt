@@ -1,0 +1,11 @@
+10
+bob 54 65
+jen 64 81
+tom 95 92
+pat 54 72
+jill 78 86
+joey 66 88
+cathy 54 42
+ben 87 89
+jane 97 99
+jake 65 59
