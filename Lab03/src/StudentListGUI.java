@@ -1,17 +1,24 @@
-import javax.swing.*;
-import java.awt.event.*;
-import java.awt.*;
-import java.text.*;
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  * A GUI for the StudentList Application
  * 
  * @author Matt Andre, Jeff Fisher
- * 
+ * @date September 17, 2012
  */
 public class StudentListGUI extends JFrame {
 
-	// ---------------------------------------------------------------
+	//---------------------------------------------------------------
+	
+	//Holds the list of students
 	private StudentList studentList;
 
 	// Declare GUI Components
@@ -28,25 +35,41 @@ public class StudentListGUI extends JFrame {
 	private JButton letterGradeButton;
 	private JButton quitButton;
 
-	// ---------------------------------------------------------------
+	//---------------------------------------------------------------
+	/**
+	 * The Constructor for the StudentListGUI
+	 * 
+	 * @param StudentList: A list of Students
+	 */
 	public StudentListGUI(StudentList studentList) {
+		
 		this.studentList = studentList;
+		
 		instantiateGUIComponents();
 		buildGUI();
 		addListeners();
+		
+		//Set default jframe close operation
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//Set window size
 		setSize(400, 300);
+		
+		//Set window visible
 		setVisible(true);
+		
 	}
 
-	// --------------------------------------------------------------
+	//--------------------------------------------------------------
 	private void instantiateGUIComponents() {
+		
+		//Initialize GUI Copmponents
 		nameLabel = new JLabel("Your Name:");
 		testGrade1Label = new JLabel("Test Grade 1:");
 		testGrade2Label = new JLabel("Test Grade 2:");
 		letterGradeLabel = new JLabel("Letter Grade:");
 		messageLabel = new JLabel("Message:");
-		
+
 		nameField = new JTextField(10);
 		testGrade1Field = new JTextField(10);
 		testGrade2Field = new JTextField(10);
@@ -56,6 +79,7 @@ public class StudentListGUI extends JFrame {
 		letterGradeButton = new JButton("Letter Grade");
 		quitButton = new JButton("QUIT");
 		
+		//Set display fields to be not editable 
 		testGrade1Field.setEditable(false);
 		testGrade2Field.setEditable(false);
 		letterGradeField.setEditable(false);
@@ -64,8 +88,13 @@ public class StudentListGUI extends JFrame {
 
 	// --------------------------------------------------------------
 	private void buildGUI() {
+		
 		Container c = getContentPane();
+		
+		//Set content pane to use grid layout
 		c.setLayout(new GridLayout(6, 2, 10, 10));
+		
+		//Add GUI components to content pane
 		c.add(nameLabel);
 		c.add(nameField);
 		c.add(testGrade1Label);
@@ -78,100 +107,48 @@ public class StudentListGUI extends JFrame {
 		c.add(quitButton);
 		c.add(messageLabel);
 		c.add(messageField);
+		
 	}
 
 	// --------------------------------------------------------------
 	private void addListeners() {
 		
-		/*
-		 * depositButton.addActionListener(new ActionListener() {
+		//Add listener to letter grade button
+		letterGradeButton.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
-				// Get the id from the id field
-				String id = idField.getText();
+				// Get the name from the name field
+				String name = nameField.getText();
 
-				// Search for the Account with this id
-				StudentAccount acc = myBank.search(id);
-				if (acc != null) {
-					// Account Exists. Check for password
-					String password = passwordField.getText();
-					if (acc.getPassword().equals(password)) {
-						// Account Id and Password match
-						String amtText = amountField.getText();
-						if (!(amtText.equals(""))) {
-							double amt = Double.parseDouble(amountField
-									.getText());
+				// Search for the Account with this name
+				Student student = studentList.search(name);
+				if (student != null) {
+					// Student Exists
+					
+					//Fill in grades
+					testGrade1Field.setText(new Integer(student.getGrade1()).toString());
+					testGrade2Field.setText(new Integer(student.getGrade2()).toString());
+					letterGradeField.setText(new Character(student.getLetterGrade()).toString());
+					
+					//Clear the error message
+					messageField.setText("");
 
-							// Do the deposit
-							boolean success = acc.deposit(amt);
-							if (success == true)
-								messageField.setText("OK: Deposit Successful");
-							else
-								messageField.setText("Deposit Unuccessful");
-						} else {
-							messageField.setText("Amount field is empty");
-						}
-					} else
-						// Id/Password combination didn't match
-						messageField.setText("Error: Incorrect Id/Password");
-				} else
-					messageField
-							.setText("Error: Account with this Id does not exist");
+				} else {
+					
+					//Clear grade Fields
+					testGrade1Field.setText("");
+					testGrade2Field.setText("");
+					letterGradeField.setText("");
+					
+					//Display Error Message
+					messageField.setText("Error: Student does not exist");
+					
+				}
 			}
+			
 		});
-
-		withdrawButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Get the id from the id field
-				String id = idField.getText();
-
-				// Search for the student eith this id
-				StudentAccount acc = myBank.search(id);
-				if (acc != null) {
-					String password = passwordField.getText();
-					if (acc.getPassword().equals(password)) {
-						String amtText = amountField.getText();
-						if (!(amtText.equals(""))) {
-							// Account Id and Password match
-							double amt = Double.parseDouble(amountField
-									.getText());
-
-							// Do the withdrawal
-							boolean success = acc.withdraw(amt);
-							if (success == true)
-								messageField
-										.setText("OK: Withdrawal Successful");
-							else
-								messageField.setText("Withdrawal Unuccessful");
-						} else {
-							messageField.setText("Amount field is empty");
-						}
-					} else
-						messageField.setText("Error: Incorrect Id/Password");
-				} else
-					messageField
-							.setText("Error: Account with this Id does not exist");
-			}
-		});
-		getBalanceButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Get the id from the id field
-				String id = idField.getText();
-
-				// Search for the student eith this id
-				StudentAccount acc = myBank.search(id);
-				if (acc != null) {
-					String password = passwordField.getText();
-					if (acc.getPassword().equals(password)) {
-						// Account Id and Password match
-						messageField.setText("Your Balance: "
-								+ d2.format(acc.getBalance()));
-					} else
-						messageField.setText("Error: Incorrect Id/Password");
-				} else
-					messageField
-							.setText("Error: Account with this Id does not exist");
-			}
-		});*/
+		
+		//Add listener to quit button
 		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -179,14 +156,15 @@ public class StudentListGUI extends JFrame {
 		});
 	}
 
-	/**
-	 * @param args
-	 */
+	// --------------------------------------------------------------
 	public static void main(String[] args) {
+		
+		//Initialize student list from text file
 		StudentList studentList = new StudentList("src\\studentAccountData.txt");
 
-
+		//Initialize the GUI from the student list
 		new StudentListGUI(studentList);
+		
 	}
 
 }
