@@ -10,7 +10,7 @@ public class TimeComplexityTester {
 		System.out.println("ElapsedTime = " + (endTime-startTime)/1000+   " micro seconds");
 		
 		
-		System.out.println("---------------------------------------");
+		System.out.println("------------------Linear Search---------------------");
 
 		
 		int[] small = new int[100];
@@ -83,8 +83,18 @@ public class TimeComplexityTester {
 		System.out.println("ElapsedTime = " + (endTime-startTime)/1000+   " micro seconds");
 
 		
-		System.out.println("---------------------------------------");
+		System.out.println("-------------------SORT--------------------");
 
+		
+		startTime = System.nanoTime();
+		IntSortSearch.selectionSort(small);
+		endTime = System.nanoTime();
+		System.out.println("ElapsedTime = " + (endTime-startTime)/1000+   " micro seconds");
+		
+		startTime = System.nanoTime();
+		IntSortSearch.selectionSort(medium);
+		endTime = System.nanoTime();
+		System.out.println("ElapsedTime = " + (endTime-startTime)/1000+   " micro seconds");
 		
 		startTime = System.nanoTime();
 		IntSortSearch.selectionSort(large);
@@ -92,6 +102,60 @@ public class TimeComplexityTester {
 		System.out.println("ElapsedTime = " + (endTime-startTime)/1000+   " micro seconds");
 		
 		
+		System.out.println("------------------Binary Search---------------------");
+
+		startTime = System.nanoTime();
+		IntSortSearch.binarySearch(small, small[0]);
+		endTime = System.nanoTime();
+		System.out.println("ElapsedTime = " + (endTime-startTime)/1000+   " micro seconds");
+		
+		startTime = System.nanoTime();
+		IntSortSearch.binarySearch(small, small[99]);
+		endTime = System.nanoTime();
+		System.out.println("ElapsedTime = " + (endTime-startTime)/1000+   " micro seconds");
+		
+		startTime = System.nanoTime();
+		IntSortSearch.binarySearch(small, (int)(Math.random()*10000));
+		endTime = System.nanoTime();
+		System.out.println("ElapsedTime = " + (endTime-startTime)/1000+   " micro seconds");
+		
+		
+		System.out.println("---------------------------------------");
+
+		
+		startTime = System.nanoTime();
+		IntSortSearch.binarySearch(medium, medium[0]);
+		endTime = System.nanoTime();
+		System.out.println("ElapsedTime = " + (endTime-startTime)/1000+   " micro seconds");
+		
+		startTime = System.nanoTime();
+		IntSortSearch.binarySearch(medium, medium[999]);
+		endTime = System.nanoTime();
+		System.out.println("ElapsedTime = " + (endTime-startTime)/1000+   " micro seconds");
+		
+		startTime = System.nanoTime();
+		IntSortSearch.binarySearch(medium, (int)(Math.random()*10000));
+		endTime = System.nanoTime();
+		System.out.println("ElapsedTime = " + (endTime-startTime)/1000+   " micro seconds");
+
+		
+		System.out.println("---------------------------------------");
+
+		
+		startTime = System.nanoTime();
+		IntSortSearch.binarySearch(large, large[0]);
+		endTime = System.nanoTime();
+		System.out.println("ElapsedTime = " + (endTime-startTime)/1000+   " micro seconds");
+		
+		startTime = System.nanoTime();
+		IntSortSearch.binarySearch(large, large[9999]);
+		endTime = System.nanoTime();
+		System.out.println("ElapsedTime = " + (endTime-startTime)/1000+   " micro seconds");
+		
+		startTime = System.nanoTime();
+		IntSortSearch.binarySearch(large, (int)(Math.random()*10000));
+		endTime = System.nanoTime();
+		System.out.println("ElapsedTime = " + (endTime-startTime)/1000+   " micro seconds");		
 	}
 	
 }
