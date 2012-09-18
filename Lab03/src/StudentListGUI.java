@@ -36,11 +36,13 @@ public class StudentListGUI extends JFrame {
 	private JButton quitButton;
 
 	//---------------------------------------------------------------
+	
 	/**
-	 * The Constructor for the StudentListGUI
+	 * Constructs a StudentListGUI from a StudentList Object
 	 * 
 	 * @param StudentList: A list of Students
 	 */
+
 	public StudentListGUI(StudentList studentList) {
 		
 		this.studentList = studentList;
@@ -61,6 +63,10 @@ public class StudentListGUI extends JFrame {
 	}
 
 	//--------------------------------------------------------------
+	
+	/**
+	 * Instantiates the GUI components 
+	 */
 	private void instantiateGUIComponents() {
 		
 		//Initialize GUI Copmponents
@@ -87,6 +93,10 @@ public class StudentListGUI extends JFrame {
 	}
 
 	// --------------------------------------------------------------
+	
+	/**
+	 * Builds the GUI by adding the components to the frame.
+	 */
 	private void buildGUI() {
 		
 		Container c = getContentPane();
@@ -111,6 +121,10 @@ public class StudentListGUI extends JFrame {
 	}
 
 	// --------------------------------------------------------------
+	
+	/**
+	 * Adds listeners to the GUI buttons
+	 */
 	private void addListeners() {
 		
 		//Add listener to letter grade button
@@ -157,6 +171,11 @@ public class StudentListGUI extends JFrame {
 	}
 
 	// --------------------------------------------------------------
+	
+	/**
+	 * The main method of the Application. Initializes the student list and gui.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		//Initialize student list from text file
