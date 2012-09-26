@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- * A GUI for the HouseList Application
+ * A GUI for the HouseList Application.
  * 
  * @author Matt Andre
  * @date September 19, 2012
