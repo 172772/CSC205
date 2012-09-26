@@ -1,14 +1,19 @@
-
+/**
+ * Represents users criteria for a house
+ * @author Matt
+ *
+ */
 public class Criteria {
 	
-	private int minimumPrice;
-	private int maximumPrice;
+	private double minimumPrice;
+	private double maximumPrice;
 	private int minimumArea;
 	private int maximumArea;
 	private int minimumNumberOfBedrooms;
 	private int maximumNumberOfBedrooms;
 	
 	/**
+	 * Constructor
 	 * @param minimumPrice
 	 * @param maximumPrice
 	 * @param minimumArea
@@ -16,27 +21,39 @@ public class Criteria {
 	 * @param minimumNumberOfBedrooms
 	 * @param maximumNumberOfBedrooms
 	 */
-	public Criteria(int minimumPrice, int maximumPrice, int minimumArea, int maximumArea, 
+	public Criteria(double minimumPrice, double maximumPrice, int minimumArea, int maximumArea, 
 			int minimumNumberOfBedrooms, int maximumNumberOfBedrooms) {
+		
 		this.minimumPrice = minimumPrice;
 		this.maximumPrice = maximumPrice;
 		this.minimumArea = minimumArea;
 		this.maximumArea = maximumArea;
 		this.minimumNumberOfBedrooms = minimumNumberOfBedrooms;
 		this.maximumNumberOfBedrooms = maximumNumberOfBedrooms;
+		
 	}
 
 	/**
+	 * @return the criteria
+	 */
+	@Override
+	public String toString() {
+		return "Criteria \n Price: " + minimumPrice + " - " + maximumPrice
+				+ "\n Area: " + minimumArea + " - " + maximumArea 
+				+ "\n Bedrooms: " 	+ minimumNumberOfBedrooms + " - "+ maximumNumberOfBedrooms + "\n";
+	}
+	
+	/**
 	 * @return the minimumPrice
 	 */
-	public int getMinimumPrice() {
+	public double getMinimumPrice() {
 		return minimumPrice;
 	}
 	
 	/**
 	 * @return the maximumPrice
 	 */
-	public int getMaximumPrice() {
+	public double getMaximumPrice() {
 		return maximumPrice;
 	}
 	

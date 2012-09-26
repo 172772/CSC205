@@ -1,28 +1,31 @@
-
+/**
+ * Holds info and methods for a House
+ * @author Matt
+ *
+ */
 public class House {
 	
 	private String address;
-    private String city;
-    private int price;
+    private double price;
     private int area;
     private int numBedrooms;
 	
     /**
+     * Constructor
 	 * @param address
-	 * @param city
 	 * @param price
 	 * @param area
 	 * @param numBedrooms
 	 */
-	public House(String address, String city, int price, int area, int numBedrooms) {
+	public House(String address, double price, int area, int numBedrooms) {
 		this.address = address;
-		this.city = city;
 		this.price = price;
 		this.area = area;
 		this.numBedrooms = numBedrooms;
 	}
 	
 	/**
+	 * Returns true if house satisfies criteria 
 	 * @param criteria
 	 * @return boolean: if criteria satisfies house
 	 */
@@ -43,16 +46,9 @@ public class House {
 	}
 	
 	/**
-	 * @return the city
-	 */
-	public String getCity() {
-		return city;
-	}
-	
-	/**
 	 * @return the price
 	 */
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 	
@@ -75,7 +71,7 @@ public class House {
 	 */
 	@Override
 	public String toString() {
-		return "House: \n Address: " + this.address + "\n City: " + this.city + "\n Price: "
+		return "House: \n Address: " + this.address + "\n Price: "
 				+ this.price + "\n Area: " + this.area + "\n Number of Bedrooms: " 
 				+ this.numBedrooms + "\n";
 	}
