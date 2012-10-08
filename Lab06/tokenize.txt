@@ -1,0 +1,5 @@
+4
+A stack is a basic data structure and 
+It can be defined in an abstract, implementation-free manner
+A stack can be easily implemented either through an array or a linked list
+The array implementation creates an array where the first element is the bottom
