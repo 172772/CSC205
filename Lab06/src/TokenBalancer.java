@@ -3,7 +3,9 @@ import java.util.Iterator;
 import java.util.Stack;
 
 /**
- * @author mandr5
+ * Abstract Class that checks if list of tokens is balanced
+ * 
+ * @author Matt Andre, Jeff Fisher
  * 
  */
 public abstract class TokenBalancer implements Balancer {
@@ -38,13 +40,27 @@ public abstract class TokenBalancer implements Balancer {
 	}
 
 	/**
-	 * @param open
-	 * @param closed
-	 * @return
+	 * Checks if tokens are a matching set of open and close tokens.
+	 * 
+	 * @param open token
+	 * @param closed token
+	 * @return true if open and closed tokens are a matching set
 	 */
 	public abstract boolean matches(String open, String closed);
 
+	/**
+	 * Checks if token is opening token.
+	 * 
+	 * @param token
+	 * @return true if token is opening token
+	 */
 	public abstract boolean isOpenToken(String token);
 
+	/**
+	 * Checks if token is closing token.
+	 * 
+	 * @param token
+	 * @return true if token is closing token
+	 */
 	public abstract boolean isCloseToken(String token);
 }

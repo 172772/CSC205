@@ -1,13 +1,15 @@
 import java.util.ArrayList;
 
 /**
- * @author mandr5
+ * Interface for a balancer.
+ * 
+ * @author Matt Andre, Jeff Fisher
  *
  */
 public interface Balancer {
 	/**
-	 * @param list
-	 * @return
+	 * @param list of Strings
+	 * @return is list balanced
 	 */
 	public boolean isBalanced(ArrayList<String> list);
 }

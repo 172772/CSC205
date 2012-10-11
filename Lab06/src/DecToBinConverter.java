@@ -1,8 +1,19 @@
 import java.util.Stack;
 
 
+/**
+ * Converts Decimal Number to Binary
+ * 
+ * @author Matt Andre, Jeff Fisher
+ *
+ */
 public class DecToBinConverter {
 
+	/**
+	 * Prints Decimal Number as Binary to standard out.
+	 * 
+	 * @param number
+	 */
 	public static void printInBin(int number) {
 		Stack<Integer> binaryStack = new Stack<Integer>();
 		

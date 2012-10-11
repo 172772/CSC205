@@ -1,5 +1,15 @@
+
+/**
+ * Tester Class for DecToBInConverter
+ * 
+ * @author Matt Andre, Jeff Fisher
+ *
+ */
 public class DecToBinConverterTester {
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		Integer[] numbers = { new Integer(23), new Integer(47),

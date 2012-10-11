@@ -4,6 +4,12 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 
+/**
+ * Demonstrates use of a StringTokenizer by tokenizing and output file
+ * 
+ * @author Matt Andre, Jeff Fisher
+ *
+ */
 public class StringTokenizerDemo {
 
 	public static void main(String[] args) {
