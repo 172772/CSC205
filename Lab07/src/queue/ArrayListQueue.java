@@ -42,7 +42,7 @@ public class ArrayListQueue<T> implements IQueue<T> {
 		}
 		
 		for(int i = 0; i<this.body.size(); i++){
-			if(this.body.get(i).equals(otherQueue.body.get(i))){
+			if(!this.body.get(i).equals(otherQueue.body.get(i))){
 				return false;
 			}
 		}

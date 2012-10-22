@@ -26,10 +26,9 @@ public class StackQueueTester {
 		q3.insert("little");
 		q3.insert("pony");
 		
-		q1.equals(q2);
-		q1.equals(q3);
-		q2.equals(q3);
-
+		System.out.println("q1 size = " + q1.size());
+		System.out.println("q2 size = " + q2.size());
+		System.out.println("q3 size = " + q3.size());
 	}
 
 }
