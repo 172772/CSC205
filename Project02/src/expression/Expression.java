@@ -6,20 +6,22 @@ package expression;
  * implemented as an array of tokens: where each token contains
  * a string.
  * 
- * @author (T.M. Rao) 
- * @version (August 2006)
+ * @author Matt Andre
+ * @version October 2012
  */
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class Expression {
 	// ---------------------------------------------------------------------
-	private ArrayList<Token> expression; // Expression is input as a String
+
+	// Expression stored as an array list of tokens
+	private ArrayList<Token> expression;
 
 	// ---------------------------------------------------------------------
+
 	/**
-	 * Constructor: The String exp contains the infix expression. This breaks it
-	 * into tokens and stores them in an ArrayList.
+	 * Constructs an expression from a string.
 	 */
 	public Expression(String exp) {
 		// Create the array that represents the body of the Expression
@@ -37,27 +39,39 @@ public class Expression {
 	}
 
 	// ---------------------------------------------------------------------
+
 	/**
-	 * Alternative constructor. This creates an array with no tokens in it.
+	 * Constructs an empty expression.
 	 */
 	public Expression() {
 		// Create the array that represents the body of the Expression
 		expression = new ArrayList<Token>();
 	}
 
+	// -----------------------------------------------------------------
+
+	/**
+	 * Returns the number of tokens in expression
+	 * 
+	 * @return size
+	 */
 	public int size() {
 		return expression.size();
 	}
 
 	// ---------------------------------------------------------------------
+
 	/**
 	 * Appending a token at the end of the expression
+	 * 
+	 * @param new token
 	 */
 	public void add(Token newElement) {
 		expression.add(newElement);
 	}
 
 	// ---------------------------------------------------------------------
+
 	/**
 	 * Creates a printable string from the expression
 	 */
@@ -68,6 +82,13 @@ public class Expression {
 		return ret;
 	}
 
+	// -----------------------------------------------------------------
+
+	/**
+	 * Returns expression as array list of tokens
+	 * 
+	 * @return expression token list
+	 */
 	public ArrayList<Token> getExpression() {
 		return expression;
 	}

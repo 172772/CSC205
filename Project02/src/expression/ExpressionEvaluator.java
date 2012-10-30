@@ -4,12 +4,18 @@ package expression;
 /**
  * Arranges for the evaluation of an arithmetic expression
  * 
- * @author (T.M. Rao)
- * @version (September 2006)
+ * @author Matt Andre
+ * @version October 2012
  */
 public class ExpressionEvaluator {
 
+	/**
+	 * Evaluates an infix expression and returns the value.
+	 * @param infix expression
+	 * @return value
+	 */
 	public int evaluate(Expression infix) {
+		
 		// Instantiate an InfixToPostfixConverter
 		InfixToPostfixConverter itop = new InfixToPostfixConverter(infix);
 

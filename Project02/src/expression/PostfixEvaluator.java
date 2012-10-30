@@ -2,32 +2,45 @@
 package expression;
 
 import java.util.ArrayList;
-import java.util.Stack;
+
+import stack.ArrayListStack;
 
 /**
  * Evaluates postfix expression
  * 
- * @author (T.M. Rao)
- * @version (October 2007)
+ * @author Matt Andre
+ * @version October 2012
  */
 public class PostfixEvaluator {
-	// Input expression
+	// -----------------------------------------------------------------
+
+	// Input postfix expression
 	private Expression postfixExpression;
+
+	// -----------------------------------------------------------------
+
+	// Value of expression
 	private int valueOfExpression;
 
+	// -----------------------------------------------------------------
+
 	/**
-	 * Constructor: assigns parameter to the instance variable
+	 * Constructs evaluator from postfix expression
 	 */
 	public PostfixEvaluator(Expression postfix) {
 		postfixExpression = postfix;
 	}
 
+	// -----------------------------------------------------------------
+
 	/**
 	 * Evaluates the postfixExpression
+	 * 
+	 * @return value
 	 */
 	public int eval() {
 		// Starts with an empty operand stack
-		Stack<Token> operandStack = new Stack<Token>();
+		ArrayListStack<Token> operandStack = new ArrayListStack<Token>();
 
 		// Temp variable
 		Token nextToken;
@@ -90,41 +103,97 @@ public class PostfixEvaluator {
 
 	}
 
+	// -----------------------------------------------------------------
+
 	/**
 	 * Performs an arithmetic operation
+	 * @param operator
+	 * @param operand1
+	 * @param operand2
+	 * @return
 	 */
-	private Token calculate(Token opr, Token opd1, Token opd2) {
-		// Get the first char from opr, it is the operator: +, -, ...
-		char ch = opr.getBody().charAt(0);
+	private Token calculate(Token operatorToken, Token operand1Token,
+			Token operand2Token) {
+
+		// Get the operator from the token
+		String operator = operatorToken.getBody();
 
 		// Get the two operands by converting from String to int
-		int op1 = Integer.parseInt(opd1.getBody());
-		int op2 = Integer.parseInt(opd2.getBody());
+		int operand1 = Integer.parseInt(operand1Token.getBody());
+		int operand2 = Integer.parseInt(operand2Token.getBody());
 
 		// Default return value, in case an error occurs
-		int res = Integer.MAX_VALUE;
+		int result = Integer.MAX_VALUE;
 
-		// Perform the operation, and set a value for res
-		switch (ch) {
-		case '+':
-			res = op1 + op2;
+		// Perform the operation, and set a value for result
+		switch (operator) {
+		case "<":
+			if(operand1 < operand2)
+				result = 1;
+			else
+				result = 0;
 			break;
-		case '-':
-			res = op1 - op2;
+		case "<=":
+			if(operand1 <= operand2)
+				result = 1;
+			else
+				result = 0;
 			break;
-		case '*':
-			res = op1 * op2;
+		case ">":
+			if(operand1 > operand2)
+				result = 1;
+			else
+				result = 0;
 			break;
-		case '/':
-			if (op2 != 0)
-				res = op1 / op2;
+		case ">=":
+			if(operand1 >= operand2)
+				result = 1;
+			else
+				result = 0;
+			break;
+		case "==":
+			if(operand1 == operand2)
+				result = 1;
+			else
+				result = 0;
+			break;
+		case "!=":
+			if(operand1 != operand2)
+				result = 1;
+			else
+				result = 0;
+			break;
+		case "||":
+			if(operand1 != 0 || operand2 != 0)
+				result = 1;
+			else
+				result = 0;
+			break;
+		case "&&":
+			if(operand1 != 0 && operand2 != 0)
+				result = 1;
+			else
+				result = 0;
+			break;
+		case "+":
+			result = operand1 + operand2;
+			break;
+		case "-":
+			result = operand1 - operand2;
+			break;
+		case "*":
+			result = operand1 * operand2;
+			break;
+		case "/":
+			if (operand2 != 0)
+				result = operand1 / operand2;
 			else
 				System.out.println("Division by zero error in"
 						+ " PostfixEvaluator.calculate().");
 			break;
-		case '%':
-			if (op2 != 0)
-				res = op1 % op2;
+		case "%":
+			if (operand2 != 0)
+				result = operand1 % operand2;
 			else
 				System.out.println("Division by zero error in"
 						+ " PostfixEvaluator.calculate().");
@@ -134,6 +203,7 @@ public class PostfixEvaluator {
 					+ "PostfixEvaluator.calculate()");
 		}
 		// Convert res into a Token and return it.
-		return new Token("" + res);
+		return new Token("" + result);
 	}
+
 }

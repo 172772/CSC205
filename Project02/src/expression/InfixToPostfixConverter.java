@@ -2,40 +2,48 @@
 package expression;
 
 import java.util.ArrayList;
-import java.util.Stack;
+
+import stack.ArrayListStack;
 
 /**
  * Converting an arithmetic expression from infix to postfix. Assumptions:
- * Arithmetic expression has only integer operands Only +, -, *, / and %
- * operators are allowed. Usual rules of precedence are assumed. Parentheses are
+ * Arithmetic expression has only integer operands Parentheses are
  * allowed.
  * 
- * @author (T.M. Rao)
- * @version (October 2006)
+ * @author Matt Andre
+ * @version October 2012
  */
 public class InfixToPostfixConverter {
+	//-----------------------------------------------------------------
+	
 	// Expression to be converted
 	private Expression infixExpression;
 
+	//-----------------------------------------------------------------
+	
 	// Resulting postfix expression
 	private Expression postfixExpression;
 
+	//-----------------------------------------------------------------
+	
 	/**
-	 * Constructor: Just assigns the parameter to instance variable
+	 * Constructs Infix To Postfix Converter from infix expression
 	 */
 	public InfixToPostfixConverter(Expression infix) {
 		infixExpression = infix;
 	}
+	
+	//-----------------------------------------------------------------
 
 	/**
-	 * Main conversion algorithm.
+	 * Converts Infix Expression to Postfix
 	 */
 	public void convertToPostfix() {
 		// Create an empty postfix expression
 		postfixExpression = new Expression();
 
 		// create an empty operator stack
-		Stack<Token> operatorStack = new Stack<Token>();
+		ArrayListStack<Token> operatorStack = new ArrayListStack<Token>();
 
 		// Temporary local variables
 		Token nextToken = null;
@@ -58,11 +66,11 @@ public class InfixToPostfixConverter {
 			else if (nextToken.isClosedParen()) {
 				// Keep pulling operators out of stack and appending
 				// them to postfix, until top of stack is an open paren
-				topOfStack = operatorStack.peek();
+				topOfStack = operatorStack.top();
 				while (!topOfStack.isOpenParen()) {
 					postfixExpression.add(topOfStack);
 					operatorStack.pop();
-					topOfStack = operatorStack.peek();
+					topOfStack = operatorStack.top();
 				}
 				// and then discard the open paren
 				operatorStack.pop();
@@ -77,7 +85,7 @@ public class InfixToPostfixConverter {
 					operatorStack.push(nextToken);
 				else {
 					// Get the precedence of the top of the stack
-					topOfStack = operatorStack.peek();
+					topOfStack = operatorStack.top();
 
 					// If the top of stack is an open parenthesis push nextToken
 					if (topOfStack.isOpenParen())
@@ -100,7 +108,7 @@ public class InfixToPostfixConverter {
 								topOfStack = operatorStack.pop();
 								postfixExpression.add(topOfStack);
 								if (!operatorStack.isEmpty()) {
-									topOfStack = operatorStack.peek();
+									topOfStack = operatorStack.top();
 									stackPrecedence = topOfStack
 											.getPrecedence();
 								}
@@ -125,9 +133,12 @@ public class InfixToPostfixConverter {
 			postfixExpression.add(topOfStack);
 		}
 	}
+	
+	//-----------------------------------------------------------------
 
 	/**
-	 * Retriever method: returns the current postfix expression
+	 * Returns the current postfix expression
+	 * @return postfix expression
 	 */
 	public Expression getPostfix() {
 		return postfixExpression;
