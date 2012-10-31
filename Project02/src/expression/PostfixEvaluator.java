@@ -107,6 +107,7 @@ public class PostfixEvaluator {
 
 	/**
 	 * Performs an arithmetic operation
+	 * 
 	 * @param operator
 	 * @param operand1
 	 * @param operand2
@@ -126,79 +127,65 @@ public class PostfixEvaluator {
 		int result = Integer.MAX_VALUE;
 
 		// Perform the operation, and set a value for result
-		switch (operator) {
-		case "<":
-			if(operand1 < operand2)
+		if (operator.equals("<")) {
+			if (operand1 < operand2)
 				result = 1;
 			else
 				result = 0;
-			break;
-		case "<=":
-			if(operand1 <= operand2)
+		} else if (operator.equals("<=")) {
+			if (operand1 <= operand2)
 				result = 1;
 			else
 				result = 0;
-			break;
-		case ">":
-			if(operand1 > operand2)
+		} else if (operator.equals(">")) {
+			if (operand1 > operand2)
 				result = 1;
 			else
 				result = 0;
-			break;
-		case ">=":
-			if(operand1 >= operand2)
+		} else if (operator.equals(">=")) {
+			if (operand1 >= operand2)
 				result = 1;
 			else
 				result = 0;
-			break;
-		case "==":
-			if(operand1 == operand2)
+		} else if (operator.equals("==")) {
+			if (operand1 == operand2)
 				result = 1;
 			else
 				result = 0;
-			break;
-		case "!=":
-			if(operand1 != operand2)
+		} else if (operator.equals("!=")) {
+			if (operand1 != operand2)
 				result = 1;
 			else
 				result = 0;
-			break;
-		case "||":
-			if(operand1 != 0 || operand2 != 0)
+		} else if (operator.equals("||")) {
+			if (operand1 != 0 || operand2 != 0)
 				result = 1;
 			else
 				result = 0;
-			break;
-		case "&&":
-			if(operand1 != 0 && operand2 != 0)
+		} else if (operator.equals("&&")) {
+			if (operand1 != 0 && operand2 != 0)
 				result = 1;
 			else
 				result = 0;
-			break;
-		case "+":
+		} else if (operator.equals("+")) {
 			result = operand1 + operand2;
-			break;
-		case "-":
+		} else if (operator.equals("-")) {
 			result = operand1 - operand2;
-			break;
-		case "*":
+		} else if (operator.equals("*")) {
 			result = operand1 * operand2;
-			break;
-		case "/":
+		} else if (operator.equals("/")) {
 			if (operand2 != 0)
 				result = operand1 / operand2;
 			else
 				System.out.println("Division by zero error in"
 						+ " PostfixEvaluator.calculate().");
-			break;
-		case "%":
+		} else if (operator.equals("%")) {
 			if (operand2 != 0)
 				result = operand1 % operand2;
 			else
 				System.out.println("Division by zero error in"
 						+ " PostfixEvaluator.calculate().");
-			break;
-		default:
+		} else {
 			System.out.println("Illegal Operator in "
 					+ "PostfixEvaluator.calculate()");
 		}
