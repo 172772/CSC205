@@ -233,7 +233,7 @@ public class Contact {
 	public int compareTo(Contact other) {
 		int compare = (this.lastName + this.firstName).compareTo(other.lastName
 				+ other.firstName);
-		if(compare == 0)
+		if (compare == 0)
 			return 0;
 		else if (compare < 0)
 			return -1;
@@ -246,7 +246,51 @@ public class Contact {
 	 * @return
 	 */
 	public boolean matches(Contact other) {
-		
-		return true;
+		if (this.lastName.indexOf(other.lastName) != -1
+				&& this.firstName.indexOf(other.firstName) != -1
+				&& this.middleName.indexOf(other.middleName) != -1
+				&& this.monthOfBirth == other.monthOfBirth
+				&& this.dayOfBirth == other.dayOfBirth
+				&& this.cellPhone.indexOf(other.cellPhone) != -1
+				&& this.homePhone.indexOf(other.homePhone) != -1
+				&& this.email.indexOf(other.email) != -1
+				&& this.address.indexOf(other.address) != -1
+				&& this.city.indexOf(other.city) != -1
+				&& this.state.indexOf(other.state) != -1
+				&& this.zipcode.indexOf(other.zipcode) != -1){
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Contact [lastName=");
+		builder.append(lastName);
+		builder.append(", firstName=");
+		builder.append(firstName);
+		builder.append(", middleName=");
+		builder.append(middleName);
+		builder.append(", monthOfBirth=");
+		builder.append(monthOfBirth);
+		builder.append(", dayOfBirth=");
+		builder.append(dayOfBirth);
+		builder.append(", cellPhone=");
+		builder.append(cellPhone);
+		builder.append(", homePhone=");
+		builder.append(homePhone);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", address=");
+		builder.append(address);
+		builder.append(", city=");
+		builder.append(city);
+		builder.append(", state=");
+		builder.append(state);
+		builder.append(", zipcode=");
+		builder.append(zipcode);
+		builder.append("]");
+		return builder.toString();
 	}
 }
