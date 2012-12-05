@@ -1,23 +1,51 @@
 /**
- * @author Matt
- *
+ * Contact: Holds information of an entry into a contact list.
+ * 
+ * @author Matt Andre
  */
 public class Contact {
-
+	
+	//Contact's last name
 	private String lastName;
+	
+	//Contact's first name
 	private String firstName;
+	
+	//Contact's middle name
 	private String middleName;
+	
+	//Contact's month of birth
 	private int monthOfBirth;
+	
+	//Contact's day of birth
 	private int dayOfBirth;
+	
+	//Contact's cell phone number
 	private String cellPhone;
+	
+	//Contact's home phone number
 	private String homePhone;
+	
+	//Contact's email
 	private String email;
+	
+	//Contact's address
 	private String address;
+	
+	//Contact's city
 	private String city;
+	
+	//Contact's state
 	private String state;
+	
+	//Contact's zip code
 	private String zipcode;
+	
+	// --------------------------------------------------------------
 
 	/**
+	 * Constructs a contact from info as strings and integers.
+	 * 
 	 * @param lastName
 	 * @param firstName
 	 * @param middleName
@@ -48,8 +76,12 @@ public class Contact {
 		this.state = state;
 		this.zipcode = zipcode;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
+	 * Constructs a contact from info as strings
+	 * 
 	 * @param lastName
 	 * @param firstName
 	 * @param middleName
@@ -91,6 +123,8 @@ public class Contact {
 			this.dayOfBirth = Integer.parseInt(dayOfBirthStr);
 		}
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
 	 * @return the lastName
@@ -98,14 +132,17 @@ public class Contact {
 	public String getLastName() {
 		return lastName;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
-	 * @param the
-	 *            lastName to set
+	 * @param the lastName to set
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
 	 * @return the firstName
@@ -113,14 +150,17 @@ public class Contact {
 	public String getFirstName() {
 		return firstName;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
-	 * @param the
-	 *            firstName to set
+	 * @param the firstName to set
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
 	 * @return the middleName
@@ -128,14 +168,17 @@ public class Contact {
 	public String getMiddleName() {
 		return middleName;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
-	 * @param the
-	 *            middleName to set
+	 * @param the  middleName to set
 	 */
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
 	 * @return the monthOfBirth
@@ -143,14 +186,17 @@ public class Contact {
 	public int getMonthOfBirth() {
 		return monthOfBirth;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
-	 * @param the
-	 *            monthOfBirth to set
+	 * @param the monthOfBirth to set
 	 */
 	public void setMonthOfBirth(int monthOfBirth) {
 		this.monthOfBirth = monthOfBirth;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
 	 * @return the dayOfBirth
@@ -158,14 +204,17 @@ public class Contact {
 	public int getDayOfBirth() {
 		return dayOfBirth;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
-	 * @param the
-	 *            dayOfBirth to set
+	 * @param the dayOfBirth to set
 	 */
 	public void setDayOfBirth(int dayOfBirth) {
 		this.dayOfBirth = dayOfBirth;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
 	 * @return the cellPhone
@@ -173,14 +222,17 @@ public class Contact {
 	public String getCellPhone() {
 		return cellPhone;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
-	 * @param the
-	 *            cellPhone to set
+	 * @param the cellPhone to set
 	 */
 	public void setCellPhone(String cellPhone) {
 		this.cellPhone = cellPhone;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
 	 * @return the homePhone
@@ -188,14 +240,17 @@ public class Contact {
 	public String getHomePhone() {
 		return homePhone;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
-	 * @param the
-	 *            homePhone to set
+	 * @param the homePhone to set
 	 */
 	public void setHomePhone(String homePhone) {
 		this.homePhone = homePhone;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
 	 * @return the email
@@ -203,14 +258,17 @@ public class Contact {
 	public String getEmail() {
 		return email;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
-	 * @param the
-	 *            email to set
+	 * @param the email to set
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
 	 * @return the address
@@ -218,14 +276,17 @@ public class Contact {
 	public String getAddress() {
 		return address;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
-	 * @param the
-	 *            address to set
+	 * @param the address to set
 	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
 	 * @return the city
@@ -233,14 +294,17 @@ public class Contact {
 	public String getCity() {
 		return city;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
-	 * @param the
-	 *            city to set
+	 * @param the city to set
 	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
 	 * @return the state
@@ -248,14 +312,17 @@ public class Contact {
 	public String getState() {
 		return state;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
-	 * @param the
-	 *            state to set
+	 * @param the state to set
 	 */
 	public void setState(String state) {
 		this.state = state;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
 	 * @return the zipcode
@@ -263,18 +330,25 @@ public class Contact {
 	public String getZipcode() {
 		return zipcode;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
-	 * @param the
-	 *            zipcode to set
+	 * @param the zipcode to set
 	 */
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
-	 * @param other
-	 * @return
+	 * Compares this contact with another to see if this contact is 
+	 * less than, equal to, or greater than.
+	 * 
+	 * @param other contact
+	 * @return -1 if less than other contact, 0 if equals other contact,
+	 * and 1 if greater than other contact.
 	 */
 	public int compareTo(Contact other) {
 		int compare = (this.lastName + this.firstName).compareTo(other.lastName
@@ -286,10 +360,15 @@ public class Contact {
 		else
 			return 1;
 	}
+	
+	// --------------------------------------------------------------
 
 	/**
-	 * @param other
-	 * @return
+	 * Checks if the info in other contact is a subset of this contacts info
+	 * 
+	 * @param other contact
+	 * @return true if other contact's info is a subset of this contacts,
+	 * otherwise false.
 	 */
 	public boolean matches(Contact other) {
 		if (this.lastName.indexOf(other.lastName) != -1
@@ -308,9 +387,11 @@ public class Contact {
 		}
 		return false;
 	}
+	
+	// --------------------------------------------------------------
 
 	/* 
-	 * 
+	 * Returns this contact's info as a string.
 	 */
 	@Override
 	public String toString() {

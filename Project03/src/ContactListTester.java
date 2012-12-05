@@ -1,12 +1,15 @@
 import linkedlist.DoublyLinkedList;
 
 /**
- * @author Matt
- *
+ * Tester For the contact list
+ * 
+ * @author Matt Andre
  */
 public class ContactListTester {
 	
 	/**
+	 * Entry point for contacts list tester
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {

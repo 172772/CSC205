@@ -10,21 +10,31 @@ import javax.swing.JOptionPane;
 import linkedlist.DoublyLinkedList;
 
 /**
- * @author Matt
+ * ContactList: Holds a alphabetical list of contacts and provides methods for
+ * inserting, searching and deleting.
  * 
+ * @author Matt Andre
  */
 public class ContactList {
 
+	// List of contacts
 	DoublyLinkedList<Contact> contacts = new DoublyLinkedList<Contact>();
 
+	// --------------------------------------------------------------
+
 	/**
-	 * 
+	 * Constructs contact list from contacts.txt
 	 */
 	public ContactList() {
 		this("src/contacts.txt");
 	}
 
+	// --------------------------------------------------------------
+
 	/**
+	 * Constructs a contact list and fills it with contacts loaded from the file
+	 * provided.
+	 * 
 	 * @param filename
 	 */
 	public ContactList(String fileName) {
@@ -55,9 +65,13 @@ public class ContactList {
 		}
 	}
 
+	// --------------------------------------------------------------
+
 	/**
+	 * Alphabetically inserts a contact in the the list.
+	 * 
 	 * @param contact
-	 * @return
+	 * @return true if contact was inserted, false if not
 	 */
 	public boolean insert(Contact contact) {
 		contacts.resetCurrentElement();
@@ -79,9 +93,13 @@ public class ContactList {
 		return true;
 	}
 
+	// --------------------------------------------------------------
+
 	/**
+	 * Deletes the first contact where the name matches
+	 * 
 	 * @param contact
-	 * @return
+	 * @return true if contact was deleted, false if not
 	 */
 	public boolean delete(Contact contact) {
 		contacts.resetCurrentElement();
@@ -90,15 +108,13 @@ public class ContactList {
 			Contact other = contacts.nextElement();
 			if (other.getLastName().equals(contact.getLastName())
 					&& other.getFirstName().equals(contact.getFirstName())) {
-				int confirm = JOptionPane.showConfirmDialog(
-					    null,
-					    "Are you sure you want to delete?",
-					    "Delete Confirmations",
-					    JOptionPane.YES_NO_OPTION);
-				if(confirm == JOptionPane.YES_OPTION){
+				int confirm = JOptionPane.showConfirmDialog(null,
+						"Are you sure you want to delete?",
+						"Delete Confirmations", JOptionPane.YES_NO_OPTION);
+				if (confirm == JOptionPane.YES_OPTION) {
 					contacts.deleteNth(location);
 					return true;
-				}else{
+				} else {
 					return false;
 				}
 			}
@@ -107,9 +123,14 @@ public class ContactList {
 		return false;
 	}
 
+	// --------------------------------------------------------------
+
 	/**
+	 * Returns a list of contacts matching the query contact
+	 * 
 	 * @param queryContact
-	 * @return
+	 * @return a list of contacts matching the query contact,
+	 *  returns an empty list if none match
 	 */
 	public DoublyLinkedList<Contact> search(Contact queryContact) {
 		DoublyLinkedList<Contact> matchingContacts = new DoublyLinkedList<Contact>();
@@ -123,7 +144,11 @@ public class ContactList {
 		return matchingContacts;
 	}
 
+	// --------------------------------------------------------------
+
 	/**
+	 * Returns a list of contacts matching the query fields
+	 * 
 	 * @param lastName
 	 * @param firstName
 	 * @param middleName
@@ -136,7 +161,8 @@ public class ContactList {
 	 * @param city
 	 * @param state
 	 * @param zipcode
-	 * @return
+	 * @return a list of contacts matching the query fields,
+	 *  returns an empty list if none match
 	 */
 	public DoublyLinkedList<Contact> search(String lastName, String firstName,
 			String middleName, String monthOfBirth, String dayOfBirth,
@@ -147,8 +173,10 @@ public class ContactList {
 				city, state, zipcode));
 	}
 
+	// --------------------------------------------------------------
+
 	/**
-	 * 
+	 * Saves the contact list to contacts.txt
 	 */
 	public void save() {
 		BufferedWriter fileOutput = null;

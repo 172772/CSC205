@@ -14,22 +14,33 @@ import javax.swing.JTextField;
 import linkedlist.DoublyLinkedList;
 
 /**
- * @author Matt
+ * ContactListGUI: provides a GUI for a ContactList.
  * 
+ * @author Matt Andre
  */
 public class ContactListGUI extends JFrame {
+	//Panels for layout
 	private JPanel navigationPanel;
 	private JPanel dataEntryPanel;
 	private JPanel resultsPanel;
+	
+	// --------------------------------------------------------------
+	
+	//Scroll text area fro outputting results
 	private JTextArea resultsArea;
 	private JScrollPane resultsScroll;
+	
+	// --------------------------------------------------------------
 
-
+	//Buttons for contact list actions
 	private JButton insertButton;
 	private JButton deleteButton;
 	private JButton searchButton;
 	private JButton quitButton;
+	
+	// --------------------------------------------------------------
 
+	//Labels for contact fields
 	private JLabel lastNameLabel = new JLabel("Last Name:");
 	private JLabel firstNameLabel = new JLabel("First Name:");
 	private JLabel middleNameLabel = new JLabel("Middle Name:");
@@ -42,7 +53,10 @@ public class ContactListGUI extends JFrame {
 	private JLabel cityLabel = new JLabel("City:");
 	private JLabel stateLabel = new JLabel("State (2-letters)");
 	private JLabel zipcodeLabel = new JLabel("Zip Code:");
+	
+	// --------------------------------------------------------------
 
+	// Text inputs for contact info
 	private JTextField lastNameTextField = new JTextField(10);
 	private JTextField firstNameTextField = new JTextField(10);
 	private JTextField middleNameTextField = new JTextField(10);
@@ -55,10 +69,17 @@ public class ContactListGUI extends JFrame {
 	private JTextField cityTextField = new JTextField(10);
 	private JTextField stateTextField = new JTextField(10);
 	private JTextField zipcodeTextField = new JTextField(10);
+	
+	// --------------------------------------------------------------
 
+	//List of Contacts
 	private ContactList contactList;
+	
+	// --------------------------------------------------------------
 
 	/**
+	 * Contstructs a contactlist gui from a contact list.
+	 * 
 	 * @param contactList
 	 */
 	public ContactListGUI(ContactList contactList) {
@@ -72,8 +93,9 @@ public class ContactListGUI extends JFrame {
 	}
 
 	// --------------------------------------------------------------
+	
 	/**
-	 * 
+	 * Instantiates the gui components
 	 */
 	private void instantiateGUIComponents() {
 		navigationPanel = new JPanel();
@@ -94,8 +116,9 @@ public class ContactListGUI extends JFrame {
 	}
 
 	// --------------------------------------------------------------
+	
 	/**
-	 * 
+	 * Adds components to panels and adds panels to main pane
 	 */
 	private void buildGUI() {
 		Container c = getContentPane();
@@ -137,8 +160,9 @@ public class ContactListGUI extends JFrame {
 	}
 
 	// --------------------------------------------------------------
+	
 	/**
-	 * 
+	 * Adds listeners to the buttons
 	 */
 	private void addListeners() {
 		insertButton.addActionListener(new ActionListener() {
@@ -253,6 +277,8 @@ public class ContactListGUI extends JFrame {
 	}
 
 	/**
+	 * Entry point for the contact list application
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
