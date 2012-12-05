@@ -1,12 +1,11 @@
-11
-Andre Matt A 6 10 555-555-5555 555-555-5555 mandr5@bport.edu 123-abc-st batavia ny 14020
-Blade Alex M 10 28 935-642-4931 989-216-7621 amBlad@domain.com 55-ligdebridge-Rd Brockport NY 14420
-Bradbury Keren M 10 4 516-423-0879 unknown candykeren12@gmail.com 99-Croyden-Avenue Great-Neck NY 11023
+10
+Andre Matt A 6 10 555-555-5555 555-555-5555 matt@matt.com 123-abc-st bp NY 14420
+Bradbury Keren M 10 4 516-423-0879 unknown candyen12@gmail.com 99-Croyden-Ave Great-Neck NY 11023
 Brennen Gywn T 1 1 123-456-7890 908-765-4321 gbren@gmail.com 200-Kiln-Ave Greece NY 14320
-Dakota Steven Robert 9 17 937-089-3554 273-937-6658 123madeup@fakeemail.com 937-Main-Street Fake-City MD 88888
+Dakota Steven Robert 9 17 937-089-3554 273-937-6658 123madeup@fake.com 937-Main-St City MD 88888
 King Linda M 2 14 808-312-4355 508-339-3373 Lking@aol.com 124-academy-Street Hammondsport NY 14840
-Mann Jane I 11 20 516-591-1468 516-423-7878 janeivy12@gmail.com 40-Jayson-Avenue Great-Neck NY 11021
-Mary pie catherine 3 8 621-364-7881 321-123-4431 mary12@gmail.com 63-hillshirefarm watertown OH 21310
-Nunez Fernando L 12 18 452-451-4562 875-752-4635 FerLNu@hotmail.com 4652-Grand-Concourse Bronx NY 10468
+Mann Jane I 11 20 516-591-1468 516-423-7878 janeivy12@gmail.com 40-Jayson Great-Neck NY 11021
+Mary pie catherine 3 8 621-364-7881 321-123-4431 mary12@gmail.com 63-hillfarm watertown OH 21310
+Nunez Fernando L 12 18 452-451-4562 875-752-4635 FerLNu@hotmail.com 4652-Grand Bronx NY 10468
 Stone Jim K 11 19 555-331-3333 123-456-7891 jStone@yahoo.com 55-myrtle-dr Naples NY 14512
-Summer Cody Andrew 4 8 847-857-7373 366-747-0148 something@fake_email.com 38884-This-Street-Doesn't-Exist Nowhere-Land WI 39479
+Summer Cody A 4 8 847-857-7373 366-747-0148 something@fake_email.com 38884-Exist Land WI 39479
