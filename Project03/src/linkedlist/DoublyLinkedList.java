@@ -402,7 +402,7 @@ public class DoublyLinkedList<T> implements Enumeration {
 		String result = "[ ";
 		DoublyLinkedNode<T> nextNode = firstNode;
 		while (nextNode != null) {
-			result = result + nextNode.toString() + " ";
+			result = result + nextNode.toString() + " \n";
 			nextNode = nextNode.getNextNode();
 		}
 		result = result + " ]";

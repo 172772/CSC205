@@ -7,14 +7,23 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import linkedlist.DoublyLinkedList;
+
+/**
+ * @author Matt
+ * 
+ */
 public class ContactListGUI extends JFrame {
 	private JPanel navigationPanel;
 	private JPanel dataEntryPanel;
 	private JPanel resultsPanel;
 	private JTextArea resultsArea;
+	private JScrollPane resultsScroll;
+
 
 	private JButton insertButton;
 	private JButton deleteButton;
@@ -28,11 +37,11 @@ public class ContactListGUI extends JFrame {
 	private JLabel dayOfBirthLabel = new JLabel("Day of Birth:");
 	private JLabel cellPhoneNumberLabel = new JLabel("Cell Phone#:");
 	private JLabel homePhoneNumberLabel = new JLabel("Home Phone#:");
-	private JLabel eMailLabel = new JLabel("E-Mail:");
+	private JLabel emailLabel = new JLabel("Email:");
 	private JLabel addressLabel = new JLabel("Street Address:");
 	private JLabel cityLabel = new JLabel("City:");
 	private JLabel stateLabel = new JLabel("State (2-letters)");
-	private JLabel zipcodeLabel = new JLabel("Last Name:");
+	private JLabel zipcodeLabel = new JLabel("Zip Code:");
 
 	private JTextField lastNameTextField = new JTextField(10);
 	private JTextField firstNameTextField = new JTextField(10);
@@ -41,16 +50,19 @@ public class ContactListGUI extends JFrame {
 	private JTextField dayOfBirthTextField = new JTextField(10);
 	private JTextField cellPhoneNumberTextField = new JTextField(10);
 	private JTextField homePhoneNumberTextField = new JTextField(10);
-	private JTextField eMailTextField = new JTextField(10);
+	private JTextField emailTextField = new JTextField(10);
 	private JTextField addressTextField = new JTextField(10);
 	private JTextField cityTextField = new JTextField(10);
 	private JTextField stateTextField = new JTextField(10);
 	private JTextField zipcodeTextField = new JTextField(10);
 
-	private ContactList myList;
+	private ContactList contactList;
 
-	public ContactListGUI(ContactList cL) {
-		myList = cL;
+	/**
+	 * @param contactList
+	 */
+	public ContactListGUI(ContactList contactList) {
+		this.contactList = contactList;
 		instantiateGUIComponents();
 		buildGUI();
 		addListeners();
@@ -60,22 +72,32 @@ public class ContactListGUI extends JFrame {
 	}
 
 	// --------------------------------------------------------------
+	/**
+	 * 
+	 */
 	private void instantiateGUIComponents() {
 		navigationPanel = new JPanel();
 		dataEntryPanel = new JPanel();
 		resultsPanel = new JPanel();
-		resultsArea = new JTextArea();
-		resultsArea.append("RESULTS APPEAR BELOW");
+		resultsArea = new JTextArea("", 22, 20);
+		resultsArea.setEditable(false);
+		resultsArea.setLineWrap(true);
+		resultsScroll = new JScrollPane(resultsArea);
+		resultsScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		
+		
 		insertButton = new JButton("INSERT");
 		deleteButton = new JButton("DELETE");
-		;
+
 		searchButton = new JButton("SEARCH");
 		quitButton = new JButton("QUIT");
 	}
 
 	// --------------------------------------------------------------
+	/**
+	 * 
+	 */
 	private void buildGUI() {
-		// --------------Get Content Pane to add components
 		Container c = getContentPane();
 		navigationPanel.setLayout(new GridLayout(4, 1, 10, 10));
 		dataEntryPanel.setLayout(new GridLayout(12, 2, 10, 10));
@@ -97,8 +119,8 @@ public class ContactListGUI extends JFrame {
 		dataEntryPanel.add(cellPhoneNumberTextField);
 		dataEntryPanel.add(homePhoneNumberLabel);
 		dataEntryPanel.add(homePhoneNumberTextField);
-		dataEntryPanel.add(eMailLabel);
-		dataEntryPanel.add(eMailTextField);
+		dataEntryPanel.add(emailLabel);
+		dataEntryPanel.add(emailTextField);
 		dataEntryPanel.add(addressLabel);
 		dataEntryPanel.add(addressTextField);
 		dataEntryPanel.add(cityLabel);
@@ -107,7 +129,7 @@ public class ContactListGUI extends JFrame {
 		dataEntryPanel.add(stateTextField);
 		dataEntryPanel.add(zipcodeLabel);
 		dataEntryPanel.add(zipcodeTextField);
-		resultsPanel.add(resultsArea);
+		resultsPanel.add(resultsScroll);
 		c.setLayout(new GridLayout(1, 3));
 		c.add(navigationPanel);
 		c.add(dataEntryPanel);
@@ -115,24 +137,116 @@ public class ContactListGUI extends JFrame {
 	}
 
 	// --------------------------------------------------------------
+	/**
+	 * 
+	 */
 	private void addListeners() {
 		insertButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				Contact newContact = new Contact(lastNameTextField.getText(),
+						firstNameTextField.getText(), middleNameTextField
+								.getText(), monthOfBirthTextField.getText(),
+						dayOfBirthTextField.getText(), cellPhoneNumberTextField
+								.getText(), homePhoneNumberTextField.getText(),
+						emailTextField.getText(), addressTextField.getText(),
+						cityTextField.getText(), stateTextField.getText(),
+						zipcodeTextField.getText());
+				if (contactList.insert(newContact)) {
+					resultsArea.setText(newContact.getFirstName() + " "
+							+ newContact.getLastName()
+							+ " was added to your contacts.");
+					lastNameTextField.setText("");
+					firstNameTextField.setText("");
+					middleNameTextField.setText("");
+					monthOfBirthTextField.setText("");
+					dayOfBirthTextField.setText("");
+					cellPhoneNumberTextField.setText("");
+					homePhoneNumberTextField.setText("");
+					emailTextField.setText("");
+					addressTextField.setText("");
+					cityTextField.setText("");
+					stateTextField.setText("");
+					zipcodeTextField.setText("");
+				} else {
+					resultsArea.setText(newContact.getFirstName() + " "
+							+ newContact.getLastName()
+							+ " was not added to your contacts.");
+				}
 			}
 		});
 		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				DoublyLinkedList<Contact> deleteContacts = contactList.search(
+						lastNameTextField.getText(),
+						firstNameTextField.getText(), "", "", "", "", "", "",
+						"", "", "", "");
+				if (!deleteContacts.isEmpty()) {
+					deleteContacts.resetCurrentElement();
+					Contact deleteContact = deleteContacts.nextElement();
+					lastNameTextField.setText(deleteContact.getLastName());
+					firstNameTextField.setText(deleteContact.getFirstName());
+					middleNameTextField.setText(deleteContact.getMiddleName());
+					monthOfBirthTextField.setText(deleteContact.getMonthOfBirth() + "");
+					dayOfBirthTextField.setText(deleteContact.getDayOfBirth() + "");
+					cellPhoneNumberTextField.setText(deleteContact.getCellPhone());
+					homePhoneNumberTextField.setText(deleteContact.getHomePhone());
+					emailTextField.setText(deleteContact.getEmail());
+					addressTextField.setText(deleteContact.getAddress());
+					cityTextField.setText(deleteContact.getCity());
+					stateTextField.setText(deleteContact.getState());
+					zipcodeTextField.setText(deleteContact.getZipcode());
+					
+					if(contactList.delete(deleteContact)){
+						resultsArea.setText("Contact deleted.");
+						lastNameTextField.setText("");
+						firstNameTextField.setText("");
+						middleNameTextField.setText("");
+						monthOfBirthTextField.setText("");
+						dayOfBirthTextField.setText("");
+						cellPhoneNumberTextField.setText("");
+						homePhoneNumberTextField.setText("");
+						emailTextField.setText("");
+						addressTextField.setText("");
+						cityTextField.setText("");
+						stateTextField.setText("");
+						zipcodeTextField.setText("");
+					}else{
+						resultsArea.setText("Contact not deleted.");
+					}
+				} else {
+					resultsArea.setText("Contact not found.");
+				}
 
 			}
 		});
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				Contact queryContact = new Contact(lastNameTextField.getText(),
+						firstNameTextField.getText(), middleNameTextField
+								.getText(), monthOfBirthTextField.getText(),
+						dayOfBirthTextField.getText(), cellPhoneNumberTextField
+								.getText(), homePhoneNumberTextField.getText(),
+						emailTextField.getText(), addressTextField.getText(),
+						cityTextField.getText(), stateTextField.getText(),
+						zipcodeTextField.getText());
+				DoublyLinkedList<Contact> searchResults = contactList.search(queryContact);
+				String searchOutput = "";
+				if (!searchResults.isEmpty()) {
+					searchResults.resetCurrentElement();
+					while(searchResults.hasMoreElements()){
+						Contact contact = searchResults.nextElement();
+						searchOutput += contact.getFirstName() + " " + contact.getLastName() + "\n" 
+								+ "Cell Phone: " + contact.getCellPhone() + "\n\n";
+					}
+					resultsArea.setText(searchOutput);
+				}else{
+					resultsArea.setText("No contacts.");
+				}
 			}
 		});
 		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				contactList.save();
 				System.exit(0);
 			}
 		});
@@ -143,9 +257,9 @@ public class ContactListGUI extends JFrame {
 	 */
 	public static void main(String[] args) {
 
-		ContactList cL = new ContactList();
+		ContactList contactList = new ContactList();
 
-		new ContactListGUI(cL);
+		new ContactListGUI(contactList);
 	}
 
 }

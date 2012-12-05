@@ -1,3 +1,7 @@
+/**
+ * @author Matt
+ *
+ */
 public class Contact {
 
 	private String lastName;
@@ -31,7 +35,6 @@ public class Contact {
 			int monthOfBirth, int dayOfBirth, String cellPhone,
 			String homePhone, String email, String address, String city,
 			String state, String zipcode) {
-		super();
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -44,6 +47,49 @@ public class Contact {
 		this.city = city;
 		this.state = state;
 		this.zipcode = zipcode;
+	}
+
+	/**
+	 * @param lastName
+	 * @param firstName
+	 * @param middleName
+	 * @param monthOfBirth
+	 * @param dayOfBirth
+	 * @param cellPhone
+	 * @param homePhone
+	 * @param email
+	 * @param address
+	 * @param city
+	 * @param state
+	 * @param zipcode
+	 */
+	public Contact(String lastName, String firstName, String middleName,
+			String monthOfBirthStr, String dayOfBirthStr, String cellPhone,
+			String homePhone, String email, String address, String city,
+			String state, String zipcode) {
+
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.cellPhone = cellPhone;
+		this.homePhone = homePhone;
+		this.email = email;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zipcode = zipcode;
+
+		if (monthOfBirthStr.length() == 0) {
+			this.monthOfBirth = -1;
+		} else {
+			this.monthOfBirth = Integer.parseInt(monthOfBirthStr);
+		}
+
+		if (dayOfBirthStr.length() == 0) {
+			this.dayOfBirth = -1;
+		} else {
+			this.dayOfBirth = Integer.parseInt(dayOfBirthStr);
+		}
 	}
 
 	/**
@@ -249,20 +295,23 @@ public class Contact {
 		if (this.lastName.indexOf(other.lastName) != -1
 				&& this.firstName.indexOf(other.firstName) != -1
 				&& this.middleName.indexOf(other.middleName) != -1
-				&& this.monthOfBirth == other.monthOfBirth
-				&& this.dayOfBirth == other.dayOfBirth
+				&& (other.monthOfBirth == -1 || this.monthOfBirth == other.monthOfBirth)
+				&& (other.dayOfBirth == -1 || this.dayOfBirth == other.dayOfBirth)
 				&& this.cellPhone.indexOf(other.cellPhone) != -1
 				&& this.homePhone.indexOf(other.homePhone) != -1
 				&& this.email.indexOf(other.email) != -1
 				&& this.address.indexOf(other.address) != -1
 				&& this.city.indexOf(other.city) != -1
 				&& this.state.indexOf(other.state) != -1
-				&& this.zipcode.indexOf(other.zipcode) != -1){
+				&& this.zipcode.indexOf(other.zipcode) != -1) {
 			return true;
 		}
 		return false;
 	}
-	
+
+	/* 
+	 * 
+	 */
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

@@ -1,10 +1,17 @@
 import linkedlist.DoublyLinkedList;
 
+/**
+ * @author Matt
+ *
+ */
 public class ContactListTester {
+	
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		ContactList cL = new ContactList("src\\contacts.txt");
-		System.out.println(cL);
-/*
+
 		System.out.println("---- OCTOBER BORN---------");
 		DoublyLinkedList<Contact> octoberBorn = cL.search("", "", "", "10", "", "", "", "", "", "", "", "");
 		System.out.println(octoberBorn);
@@ -19,6 +26,7 @@ public class ContactListTester {
 		System.out.println(residents516);
 		System.out.println("---- gmail users ---------");
 		DoublyLinkedList<Contact> gmailUsers = cL.search("", "", "", "", "", "", "", "gmail", "", "", "", "");
-		System.out.println(gmailUsers);*/
+		System.out.println(gmailUsers);
 	}
+	
 }
